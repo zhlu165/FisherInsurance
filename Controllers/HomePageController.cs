@@ -1,6 +1,14 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
+using FisherInsurance.Models;
 public class HomePageController : Controller
 {
+    Quote quote = new Quote {
+        Id = 456,
+        Product = "Home Insurance",
+        ExpireDate = DateTime.Now.AddDays(45),
+        Price = 45.00M
+    };
     public IActionResult Index() 
     {
         return View(); 
@@ -8,7 +16,7 @@ public class HomePageController : Controller
 
     public IActionResult Quote() 
     {
-        return Ok("This is the quote of the HomePageController"); 
+        return View(quote);
     }
     
 }
